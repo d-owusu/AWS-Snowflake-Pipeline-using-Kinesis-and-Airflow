@@ -17,7 +17,7 @@ Edit the  agent.json file to reflect the the file locations and names of of deli
 ![](https://github.com/d-owusu/AWS-Snowflake-Pipline-using-KInesis-and-Airflow/blob/main/pictures/kinesis_configuration.png)
 
 ##  Start Firehose Agent
-Start firshose-agent with **sudo service aws-kinesis-agent start** . Use tail -f /var/log/aws-kinesis-agent/aws-kinesis-agent.log** to check the logs.
+Start firshose-agent with **sudo service aws-kinesis-agent start** . Use **tail -f /var/log/aws-kinesis-agent/aws-kinesis-agent.log** to check the logs.
 **NB: The kinesis agent configuration file is sensitive to case letters**
 From the picture, all recoreds for customers and orders were successfully parsed.
 ![](https://github.com/d-owusu/AWS-Snowflake-Pipline-using-KInesis-and-Airflow/blob/main/pictures/kinesis_success.png)
