@@ -24,4 +24,4 @@ From the picture, all recoreds for customers and orders were successfully parsed
 
 ## s3
 Data can be seen be in S3
-![]()
+![](https://github.com/d-owusu/AWS-Snowflake-Pipline-using-KInesis-and-Airflow/blob/main/pictures/s3.png)
