@@ -1,0 +1,83 @@
+CREATE TABLE Customers_raw (
+C_CUSTKEY NUMBER(38,0),
+C_NAME VARCHAR(25),
+C_ADDRESS VARCHAR(40),
+C_NATIONKEY NUMBER(38,0),
+C_PHONE VARCHAR(15),
+C_ACCTBAL NUMBER(12,2),
+C_MKTSEGMENT VARCHAR(10),
+C_COMMENT VARCHAR(117),
+C_BATCH_ID DOUBLE
+);
+
+CREATE or replace TABLE orders_raw (
+O_ORDERKEY NUMBER(38,0),
+O_CUSTKEY NUMBER(38,0),
+O_ORDERSTATUS VARCHAR(50),
+O_TOTALPRICE NUMBER(12,2),
+O_ORDERDATE DATE,
+O_ORDERPRIORITY VARCHAR(15),
+O_CLERK VARCHAR(15),    
+O_SHIPPRIORITY NUMBER(38,0),
+O_COMMENT VARCHAR(79),
+O_BATCH_ID DOUBLE    
+);
+
+
+CREATE or replace STORAGE INTEGRATION S3_INTEGRATION
+  TYPE = EXTERNAL_STAGE
+  STORAGE_PROVIDER = S3
+  STORAGE_AWS_ROLE_ARN = 'arn:aws:iam::368223145661:role/snowflake_access_role'
+  ENABLED = TRUE
+  STORAGE_ALLOWED_LOCATIONS = ('s3://snflakedata/firehose/');
+
+
+DESC INTEGRATION S3_INTEGRATION;
+
+
+
+create or replace file format csv_format
+  field_delimiter = ','
+  skip_header = 1
+  null_if = ('NULL', 'null')
+  empty_field_as_null = true
+  skip_blank_lines = TRUE
+  trim_space = TRUE
+  FIELD_OPTIONALLY_ENCLOSED_BY='"'
+  
+  
+CREATE OR REPLACE STAGE CUSTOMER_RAW_STAGE
+  URL='s3://snflakedata/firehose/customers/'
+  STORAGE_INTEGRATION = S3_INTEGRATION
+  FILE_FORMAT=CSV_FORMAT; 
+
+
+
+CREATE OR REPLACE STAGE ORDER_RAW_STAGE
+  URL='s3://snflakedata/firehose/orders/'
+  STORAGE_INTEGRATION = S3_INTEGRATION
+  FILE_FORMAT=CSV_FORMAT; 
+  
+  
+copy into CUSTOMERS_RAW
+(C_CUSTKEY, C_NAME, C_ADDRESS, C_NATIONKEY, C_PHONE, C_ACCTBAL, C_MKTSEGMENT, C_COMMENT, C_BATCH_ID) from
+( select t.$1,t.$2,t.$3,t.$4,t.$5,t.$6,t.$7,t.$8,'20221114020201' from @CUSTOMER_RAW_STAGE t) ON_ERROR = 'continue'; 
+
+select * from customers_raw;
+
+
+copy into orders_raw
+(O_ORDERKEY,O_CUSTKEY,O_ORDERSTATUS,O_TOTALPRICE,O_ORDERDATE,O_ORDERPRIORITY,O_CLERK,O_SHIPPRIORITY,O_COMMENT, O_BATCH_ID) from
+( select t.$1,t.$2,t.$3,t.$4,t.$5,t.$6,t.$7,t.$8,t.$9, '20221114020201' from @ORDER_RAW_STAGE t) ON_ERROR = 'continue';
+
+select * from orders_raw limit 20 ;
+
+
+
+
+
+
+
+
+
+
