@@ -35,3 +35,8 @@ In sńowflake
 - Copy data using the copy into command.
 
 ![](https://github.com/d-owusu/AWS-Snowflake-Pipline-using-KInesis-and-Airflow/blob/main/pictures/snowflake2.png)
+
+
+## Airflow
+I run the airflow locally. first i set up an aws and snowflake connection in airflow using my credentials then run the dag.
+![](https://github.com/d-owusu/AWS-Snowflake-Pipline-using-KInesis-and-Airflow/blob/main/pictures/airflow.png)
