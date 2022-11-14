@@ -40,3 +40,5 @@ In sńowflake
 ## Airflow
 I run the airflow locally. first i set up an aws and snowflake connection in airflow using my credentials then run the dag.
 ![](https://github.com/d-owusu/AWS-Snowflake-Pipline-using-KInesis-and-Airflow/blob/main/pictures/airflow.png)
+
+![](https://github.com/d-owusu/AWS-Snowflake-Pipline-using-KInesis-and-Airflow/blob/main/pictures/airflow_graph.png)
