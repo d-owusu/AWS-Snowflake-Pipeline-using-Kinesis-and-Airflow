@@ -25,3 +25,13 @@ From the picture, all recoreds for customers and orders were successfully parsed
 ## s3
 Data can be seen be in S3
 ![](https://github.com/d-owusu/AWS-Snowflake-Pipline-using-KInesis-and-Airflow/blob/main/pictures/s3.png)
+
+## Snowflake
+In sńowflake
+- create a Warehouse , database and a schema
+- Create two tables , one for customers and the other for orders
+- Create a storage integration and an s3 policy to allow snowflake access
+- Create a staging area for the data. 
+- Copy data using the copy into command.
+
+![](https://github.com/d-owusu/AWS-Snowflake-Pipline-using-KInesis-and-Airflow/blob/main/pictures/snowflake2.png)
