@@ -21,3 +21,7 @@ Start firshose-agent with **sudo service aws-kinesis-agent start** . Use **tail 
 **NB: The kinesis agent configuration file is sensitive to case letters**
 From the picture, all recoreds for customers and orders were successfully parsed.
 ![](https://github.com/d-owusu/AWS-Snowflake-Pipline-using-KInesis-and-Airflow/blob/main/pictures/kinesis_success.png)
+
+## s3
+Data can be seen be in S3
+![]()
