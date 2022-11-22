@@ -32,13 +32,17 @@ In sńowflake
 - Create two tables , one for customers and the other for orders
 - Create a storage integration and an s3 policy to allow snowflake access
 - Create a staging area for the data. 
-- Copy data using the copy into command.
 
 ![](https://github.com/d-owusu/AWS-Snowflake-Pipline-using-KInesis-and-Airflow/blob/main/pictures/snowflake2.png)
 
 
 ## Airflow
-I run the airflow locally. first i set up an aws and snowflake connection in airflow using my credentials then run the dag.
+I run the airflow locally. first i set up an aws and snowflake connection in airflow using my credentials then run the dag. There were some errors as can be seen from the first two runs which were connection errors but was able to fix it on the third run
 ![](https://github.com/d-owusu/AWS-Snowflake-Pipline-using-KInesis-and-Airflow/blob/main/pictures/airflow.png)
 
 ![](https://github.com/d-owusu/AWS-Snowflake-Pipline-using-KInesis-and-Airflow/blob/main/pictures/airflow_graph.png)
+
+## Transformations
+I try to make some transformations with airflow
+![]()
+
