@@ -5,7 +5,7 @@ I ingest data using kinesis firehose and send to s3 then move  the proceesed dat
 ![](https://github.com/d-owusu/AWS-Snowflake-Pipline-using-KInesis-and-Airflow/blob/main/Architecture.png)
 
 ## EC2
-I create an EC2 instance. I use the small free tier instance which was able able to handle the task .I attach an IAM role with full access to firshose and  cloudwatch . Install the kinesis firehose agent.
+I create an EC2 instance. I use the free tier instance which was  able to handle the task .I attach an IAM role with full access to firshose and  cloudwatch . Install the kinesis firehose agent.
 ![](https://github.com/d-owusu/AWS-Snowflake-Pipline-using-KInesis-and-Airflow/blob/main/pictures/install_kinesis_agent.png)
 
 ## Firehose
